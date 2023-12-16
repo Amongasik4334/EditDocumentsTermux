@@ -66,7 +66,7 @@ while True:
                 print(item)
         elif i.split(' ')[0] == 'sd':
             log += f',{i}'
-            if pathlib.Path(path+'/'+i.split(' ')[1]).exists():
+            if i.split(' ')[1] != '..' and i.split(' ')[1] != '.' and pathlib.Path(path+'/'+i.split(' ')[1]).exists():
                 path = pathlib.Path(path+'/'+i.split(' ')[1])
         elif i.split(' ')[0] == 'rd':
             log += f',{i}'
@@ -78,7 +78,7 @@ while True:
 
                 open(path + '/' + i.split(' ')[1], 'w+').write(input(f'{Style.BRIGHT + Fore.RED}{path + "/" + i.split(" ")[1]}*write {Style.NORMAL + Fore.RESET}%'))
     except Exception:
-        print(f'error{Exception.with_traceback(traceback.TracebackException)}')
+        print(f'error')
         log += f',error\''''
     open('DES.py', 'w+').write(r); print(f'Create DES.py #{time.localtime().tm_sec}s.{time.localtime().tm_min}m')
     del r
